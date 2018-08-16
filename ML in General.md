@@ -17,8 +17,9 @@
 ## Types of Artificial Intelligence Learning Models  <a name="aimodels"> </br>
 
 ### AI Learning Models: Knowledge-Based Classification  <a name="kbc"> </br>
-- **Inductive Learning**: This type of AI learning model is based on inferring a general rule from datasets of input-output pairs.
+- **Inductive Learning**: This type of AI learning model is based on inferring a general rule from datasets of input-output pairs. Algorithms SVM, ANN, kNN - are all inductive learners.
 - **Deductive Learning**:  This type of AI learning technique starts with a series of rules and infers new rules that are more efficient in the context of a specific AI algorithm.
+ - **Summary**: A deductive approach to teaching language starts by giving learners rules, then examples, then practice. It is a teacher-centred approach to presenting new content. This is compared with an inductive approach, which starts with examples and asks learners to find rules, and hence is more learner-centred.
 
 ### AI Learning Models: Feedback-Based Classification <a name="fbc"> </br>
 
@@ -66,15 +67,13 @@ A learning model that summarizes data with a set of parameters of fixed size (in
 A learning model where the number of parameters is not determined prior to training. On the contrary, nonparametric models (can) become more and more complex with an increasing amount of data.
 
 ## Discriminative vs Generative Learning Algorithm ?</br> <a name="dam"></br>
-**Discriminative algorithms model p(y|x; w)**, that is, given the dataset and learned parameter, what is the probability of y belonging to a specific class. A discriminative algorithm doesn't care about how the data was generated, it simply categorizes a given example</br>
-Ex: Linear Regression, Logistic Regression, Support Vector Machines etc.
+- **Discriminative algorithms model p(y|x; w)**, that is, given the dataset and learned parameter, what is the probability of y belonging to a specific class. A discriminative algorithm doesn't care about how the data was generated, it simply categorizes a given example</br>
+ Ex: Linear Regression, Logistic Regression, Support Vector Machines etc.
+ Given a training set, an algorithm like logistic regression or the perceptron algorithm (basically) tries to find a straight line—that is, a decision boundary—that separates the elephants and dogs. Then, to classify a new animal as either an elephant or a dog, it checks on which side of the decision boundary it falls, and makes its prediction accordingly.</br>
 
-**Generative algorithms model p(x|y)**, that is, the distribution of features given that it belongs to a certain class. A generative algorithm models how the data was generated.</br>
-Ex: Naive Bayes, Hidden Markov Models etc.
-
-Given a training set, an algorithm like logistic regression or the perceptron algorithm (basically) tries to find a straight line—that is, a decision boundary—that separates the elephants and dogs. Then, to classify a new animal as either an elephant or a dog, it checks on which side of the decision boundary it falls, and makes its prediction accordingly.</br>
-
-First, looking at elephants, we can build a model of what elephants look like. Then, looking at dogs, we can build a separate model of what dogs look like. Finally, to classify a new animal, we can match the new animal against the elephant model, and match it against the dog model, to see whether the new animal looks more like the elephants or more like the dogs we had seen in the training set.
+- **Generative algorithms model p(x|y)**, that is, the distribution of features given that it belongs to a certain class. A generative algorithm models how the data was generated.</br>
+ Ex: Naive Bayes, Hidden Markov Models etc.
+ First, looking at elephants, we can build a model of what elephants look like. Then, looking at dogs, we can build a separate model of what dogs look like. Finally, to classify a new animal, we can match the new animal against the elephant model, and match it against the dog model, to see whether the new animal looks more like the elephants or more like the dogs we had seen in the training set.
 
 ## What is cross validation ?</br> <a name="cv"></br>
 
@@ -113,20 +112,32 @@ Regulariztion is a technique to prevent overfitting by penalizing the coefficien
 * **Regression Loss Function**
     * Square or l2 loss (not robust)
     * Absolute or Laplace loss (not differentiable)
-    * Huber Loss (robust and differentiable)
+    * Huber Loss (robust and differentiable) - In statistics, the Huber loss is a loss function used in robust regression, that is less sensitive to outliers in data than the squared error loss. 
+    
+    ![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Huber_loss.svg/1080px-Huber_loss.svg.png)
+      
+    ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/e384efc4ae2632cb0bd714462b7c38c272098cf5)
+    
 * **Classification Loss Function**
-    * SVM/Hinge loss
-    * log loss
+    * SVM/Hinge loss - The hinge loss is used for "maximum-margin" classification, most notably for support vector machines (SVMs).
+    * log loss (Logarithmic Loss) - measures the performance of a classification model where the prediction input is a probability value between 0 and 1. The goal of our machine learning models is to minimize this value. A perfect model would have a log loss of 0. Log loss increases as the predicted probability diverges from the actual label. **Accuracy vs Log LOSS**::
+    
+    ** **Accuracy** is the count of predictions where your predicted value equals the actual value. Accuracy is not always a good indicator because of its yes or no nature.
+    
+    ** **Log Loss** takes into account the uncertainty of your prediction based on **how much it varies** from the actual label. This gives us a **more nuanced view** into the performance of our model
+    
+    
 ## How do you handle missing or corrupted data in a dataset? <a name="missing"></br>
 Before jumping to the methods of data imputation, we have to understand the reason why data goes missing.
 
   - **Missing at Random (MAR)**: Missing at random means that the propensity for a data point to be missing is not related to the missing data, but it is related to some of the observed data.
-  - **Missing Completely at Random (MCAR)**: The fact that a certain value is missing has nothing to do with its hypothetical         value and with the values of other variables.
-  - **Missing not at Random (MNAR)**: Two possible reasons are that the missing value depends on the hypothetical value (e.g.         People with high salaries generally do not want to reveal their incomes in surveys) or missing value is dependent on some other variable’s value (e.g. Let’s assume that females generally don’t want to reveal their ages! Here the missing value in age variable is impacted by gender variable).
+  -- Mean, Median and Mode Imputation
   
-  * Mean, Median and Mode Imputation
-  * Multiple Imputation
-  * KNN (K Nearest Neighbors)
+  - **Missing Completely at Random (MCAR)**: The fact that a certain value is missing has nothing to do with its hypothetical         value and with the values of other variables.
+  -- Multiple Imputation
+  
+  - **Missing not at Random (MNAR)**: Two possible reasons are that the missing value depends on the hypothetical value (e.g.         People with high salaries generally do not want to reveal their incomes in surveys) or missing value is dependent on some other variable’s value (e.g. Let’s assume that females generally don’t want to reveal their ages! Here the missing value in age variable is impacted by gender variable).
+  -- KNN (K Nearest Neighbors)
 
 ## How would you handle an imbalanced dataset? <a name="imb"></br>
 * Using a better metrics like AUROC, Precision, Recall etc.
